@@ -3,53 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noche de Amor</title>
+<title>Una Noche Para Recordar</title>
 
 <style>
 body{
     margin:0;
     padding:0;
-    background: radial-gradient(circle at center, #1a001f 0%, #000 80%);
+    background: radial-gradient(circle at center, #120016 0%, #000 80%);
     font-family: 'Georgia', serif;
-    overflow-x:hidden;
+    overflow:hidden;
     color:white;
 }
 
-/* UNIVERSO ROMANTICO */
+/* PANTALLA INICIAL */
+.intro{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    letter-spacing:3px;
+    animation: desaparecer 4s forwards;
+    z-index:10;
+}
+
+@keyframes desaparecer{
+    0%{opacity:1;}
+    80%{opacity:1;}
+    100%{opacity:0; visibility:hidden;}
+}
+
+/* ESTRELLAS */
 .estrellas{
     position:fixed;
     width:100%;
     height:100%;
-    background: transparent;
-    box-shadow:
-        0 0 2px white,
-        200px 300px 2px white,
-        400px 600px 2px white,
-        600px 200px 2px white,
-        800px 500px 2px white,
-        1000px 700px 2px white;
-    animation: parpadeo 4s infinite alternate;
-    z-index:-2;
+    background:transparent;
+    z-index:-3;
 }
 
-@keyframes parpadeo{
-    from{opacity:0.3;}
+.estrellas span{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation: brillar 3s infinite alternate;
+}
+
+@keyframes brillar{
+    from{opacity:0.2;}
     to{opacity:1;}
 }
 
-/* BRUMA */
-.bruma{
+/* CORAZONES FLOTANDO */
+.corazon{
     position:fixed;
-    width:200%;
-    height:200%;
-    background: radial-gradient(circle, rgba(180,0,255,0.2) 0%, transparent 60%);
-    animation: moverBruma 30s linear infinite;
-    z-index:-1;
+    color:rgba(255,0,120,0.2);
+    font-size:20px;
+    animation: subir 10s linear infinite;
 }
 
-@keyframes moverBruma{
-    from{transform:translate(0,0);}
-    to{transform:translate(-400px,-400px);}
+@keyframes subir{
+    from{transform:translateY(100vh) scale(0.8);}
+    to{transform:translateY(-10vh) scale(1.2);}
 }
 
 /* CONTENEDOR */
@@ -57,13 +77,13 @@ body{
     width:90%;
     max-width:900px;
     margin:auto;
-    padding:50px 0;
+    padding:60px 0;
     text-align:center;
-    animation: despertar 2s ease forwards;
+    animation: aparecer 3s ease forwards;
     opacity:0;
 }
 
-@keyframes despertar{
+@keyframes aparecer{
     to{opacity:1;}
 }
 
@@ -71,8 +91,8 @@ body{
 .video{
     border-radius:30px;
     overflow:hidden;
-    box-shadow:0 0 50px rgba(200,0,255,0.7);
-    margin-bottom:60px;
+    box-shadow:0 0 60px rgba(200,0,255,0.7);
+    margin-bottom:70px;
 }
 
 iframe{
@@ -83,35 +103,25 @@ iframe{
 
 /* CARTA */
 .carta{
-    position:relative;
     padding:60px;
-    border-radius:35px;
+    border-radius:40px;
     background:rgba(255,255,255,0.05);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
     box-shadow:
-        0 0 30px rgba(180,0,255,0.6),
-        0 0 80px rgba(100,0,200,0.4);
+        0 0 40px rgba(180,0,255,0.6),
+        0 0 100px rgba(120,0,200,0.4);
     font-size:22px;
     line-height:2;
     text-align:left;
-    overflow:hidden;
+    animation: flotar 6s ease-in-out infinite;
 }
 
-/* EFECTO RESPIRAR */
-.carta{
-    animation: respirar 6s ease-in-out infinite;
+@keyframes flotar{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
 }
 
-@keyframes respirar{
-    0%,100%{box-shadow:
-        0 0 30px rgba(180,0,255,0.6),
-        0 0 80px rgba(100,0,200,0.4);}
-    50%{box-shadow:
-        0 0 50px rgba(220,0,255,0.9),
-        0 0 120px rgba(150,0,255,0.6);}
-}
-
-/* BRILLO METAL MORADO */
+/* METAL MORADO */
 .metal-morado{
     background: linear-gradient(90deg, #6a00ff, #e0aaff, #6a00ff);
     background-size:200%;
@@ -127,29 +137,23 @@ iframe{
 
 /* FRASES FINALES */
 .brillo-rojo{
-    margin-top:70px;
-    font-size:30px;
+    margin-top:80px;
+    font-size:32px;
     color:#ff003c;
     text-shadow:
-        0 0 10px #ff003c,
-        0 0 25px #ff003c,
-        0 0 50px #ff003c;
-    opacity:0;
-    animation: aparecer 2s ease forwards;
-    animation-delay:1s;
+        0 0 15px #ff003c,
+        0 0 40px #ff003c,
+        0 0 80px #ff003c;
 }
 
 .te-amo{
     margin-top:30px;
-    font-size:36px;
+    font-size:38px;
     color:#b100ff;
     text-shadow:
-        0 0 12px #b100ff,
-        0 0 30px #b100ff,
-        0 0 60px #b100ff;
-    opacity:0;
-    animation: aparecer 2s ease forwards;
-    animation-delay:3s;
+        0 0 20px #b100ff,
+        0 0 50px #b100ff,
+        0 0 90px #b100ff;
 }
 
 .neon-dorado{
@@ -157,25 +161,26 @@ iframe{
     font-size:28px;
     color:#ffd700;
     text-shadow:
-        0 0 5px #ffd700,
-        0 0 20px #ffd700,
-        0 0 40px #ffcc00,
-        0 0 70px #ffae00;
-    opacity:0;
-    animation: aparecer 2s ease forwards;
-    animation-delay:5s;
-}
-
-@keyframes aparecer{
-    to{opacity:1;}
+        0 0 10px #ffd700,
+        0 0 30px #ffd700,
+        0 0 60px #ffcc00,
+        0 0 100px #ffae00;
 }
 </style>
 </head>
 
 <body>
 
+<div class="intro">Esta noche es solo para nosotros...</div>
+
 <div class="estrellas"></div>
-<div class="bruma"></div>
+
+<!-- Corazones -->
+<div class="corazon" style="left:10%; animation-delay:0s;">❤</div>
+<div class="corazon" style="left:30%; animation-delay:3s;">❤</div>
+<div class="corazon" style="left:50%; animation-delay:6s;">❤</div>
+<div class="corazon" style="left:70%; animation-delay:2s;">❤</div>
+<div class="corazon" style="left:85%; animation-delay:5s;">❤</div>
 
 <div class="contenedor">
 
@@ -209,8 +214,7 @@ iframe{
     <div class="neon-dorado">
         Prometo caminar a tu lado, no solo en los senderos iluminados, sino también en los caminos inciertos, donde juntos descubriremos la belleza de lo desconocido. Te amaré sin medida, con un amor tan profundo que cada latido de mi corazón será un eco de mis sentimientos por ti, un canto que solo tú puedes escuchar. Cuidaré de ti por toda la eternidad, como un jardinero que nutre la flor más preciosa, protegiendo tu esencia y celebrando cada instante que compartimos. Esta promesa es un susurro del alma, un compromiso de ser tu compañero en cada aventura, tu apoyo en cada desafío y tu refugio en cada tormenta. Juntos, crearemos un amor que no solo perdura, sino que brilla intensamente, iluminando nuestras vidas y dejando una huella imborrable en el tiempo.
     </div>
-
 </div>
 
 </body>
-</html>
+</html> 
